@@ -97,7 +97,7 @@ def generate_workout_plan(
     days_per_week: int,
     equipment: list[str],
     limitations: str,
-    model: str = "llama-3.3-70b-versatile",
+    model: str = "openai/gpt-oss-20b",
 ) -> str:
     """Call the Groq API and return a workout plan.
 
@@ -155,7 +155,7 @@ def swap_exercise(
     api_key: str,
     exercise_name: str,
     context: str,
-    model: str = "llama-3.3-70b-versatile",
+    model: str = "openai/gpt-oss-20b",
 ) -> str:
     """Ask the LLM to suggest an alternative for a single exercise.
 
