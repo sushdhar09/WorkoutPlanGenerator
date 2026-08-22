@@ -61,6 +61,13 @@ with col1:
         value=4,
     )
 
+    height_ft: float = st.number_input(
+        "Height (feet)",
+        min_value=3.0,  # minimum sensible height
+        max_value=8.0,  # maximum sensible height
+        step=0.1  # allow decimal precision (e.g., 5.5 ft)
+    )
+
 with col2:
     experience_level: str = st.selectbox(
         "Experience level",
@@ -72,6 +79,13 @@ with col2:
         "Equipment access",
         options=["No equipment (bodyweight only)", "Home dumbbells", "Resistance bands", "Full gym"],
         default=["Full gym"],
+    )
+
+    weight_kg: float = st.number_input(
+        "Weight (kg)",
+        min_value=20.0,  # minimum sensible weight
+        max_value=300.0,  # maximum sensible weight
+        step=0.5 # allow half‑kg increments
     )
 
 limitations: str = st.text_area(
@@ -118,6 +132,8 @@ if generate_clicked or regenerate_clicked:
                     experience_level=experience_level,
                     days_per_week=days_per_week,
                     equipment=equipment,
+                    height =height_ft,
+                    weight =weight_kg,
                     limitations=limitations,
                 )
                 st.session_state.plan = plan

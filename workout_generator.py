@@ -51,6 +51,8 @@ def build_user_prompt(
     experience_level: str,
     days_per_week: int,
     equipment: list[str],
+    height : float,
+    weight: float,
     limitations: str,
 ) -> str:
     """Build the user-facing prompt from structured inputs.
@@ -72,6 +74,8 @@ def build_user_prompt(
         f"**Experience level:** {experience_level}",
         f"**Available training days per week:** {days_per_week}",
         f"**Equipment access:** {equipment_str}",
+        f"**Height of person in feet:** {height}",
+        f"**Weight of person in Kg:** {weight}",
     ]
 
     if limitations and limitations.strip():
@@ -97,6 +101,8 @@ def generate_workout_plan(
     days_per_week: int,
     equipment: list[str],
     limitations: str,
+    height : float,
+    weight: float,
     model: str = "openai/gpt-oss-20b",
 ) -> str:
     """Call the Groq API and return a workout plan.
@@ -122,6 +128,8 @@ def generate_workout_plan(
         experience_level=experience_level,
         days_per_week=days_per_week,
         equipment=equipment,
+        height= height,
+        weight= weight,
         limitations=limitations,
     )
 
